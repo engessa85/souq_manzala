@@ -4,7 +4,7 @@ from rest_framework.permissions import IsAuthenticated,AllowAny
 from .serializer import PersonSerializer
 from rest_framework import viewsets
 from product.models import Persons
-
+from django.http import HttpResponse
 
 
 
@@ -30,3 +30,7 @@ def getdata(request):
     person_data = Persons.objects.all()
     person_serialized = PersonSerializer(person_data , many = True)
     return Response(person_serialized.data)
+
+def home_page(request):
+    return HttpResponse("Hello, World!")
+
