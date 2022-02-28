@@ -32,5 +32,5 @@ def getdata(request):
     return Response(person_serialized.data)
 
 def home_page(request):
-    return HttpResponse("Hello, World!")
+    return HttpResponse("Souq El manzala")
 
