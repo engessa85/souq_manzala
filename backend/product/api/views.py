@@ -1,9 +1,9 @@
 from rest_framework.decorators import api_view,permission_classes
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated,AllowAny
-from .serializer import PersonSerializer
+from .serializer import PersonSerializer, MainSliderSerializer
 from rest_framework import viewsets
-from product.models import Persons
+from product.models import Persons,MainSlider
 from django.http import HttpResponse
 
 
@@ -34,3 +34,10 @@ def getdata(request):
 def home_page(request):
     return HttpResponse("Souq El manzala")
 
+
+@api_view(['GET'])
+@permission_classes([AllowAny])      
+def MainSiderGet(request):
+    mainSlider_data = MainSlider.objects.all()
+    mainSlider_data_serialized = MainSliderSerializer(mainSlider_data , many = True)
+    return Response(mainSlider_data_serialized.data)

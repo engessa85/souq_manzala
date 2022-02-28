@@ -1,6 +1,6 @@
 
 from django.urls import path,include
-from .views import test,getdata,home_page
+from .views import test,getdata,home_page,MainSiderGet
 
 
 
@@ -8,6 +8,7 @@ from .views import test,getdata,home_page
 urlpatterns = [
     path('test/',test),
     path('person/',getdata),
-    path('',home_page)
+    path('',home_page),
+    path('mainslider/',MainSiderGet)
 
 ]
